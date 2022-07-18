@@ -1,0 +1,127 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col col-md-4 offset-5">
+      <button
+        type="button"
+        class="btn btn-success"
+        routerLink="/userData/create"
+      >
+        Add User <i class="bi bi-person-plus-fill"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col text-center mt-3 mx-5">
+    <table class="table table-dark table-hover shadow p-5 mb-5 rounded">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Avtar</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Channel</th>
+          <th scope="col">Courses</th>
+          <th scope="col">Rating</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of allData">
+          <th scope="row">{{ data.id }}</th>
+          <th scope="row">
+            <img
+              class="image"
+              src="{{ data.photo }}"
+              alt="Image"
+              (click)="openModal(template, data.id)"
+            />
+          </th>
+          <td>{{ data.Name }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.Mobile }}</td>
+          <td>{{ data.channel }}</td>
+          <td>{{ data.Courses }}</td>
+          <td>{{ data.rating }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-warning"
+              (click)="openModal(template, data.id)"
+            >
+              <i class="bi bi-eye-fill"></i>
+            </button>
+            &nbsp;
+            <button
+              type="button"
+              class="btn btn-primary"
+              [routerLink]="['/userData/edit', data.id]"
+            >
+              <i class="bi bi-pencil-fill"></i>
+            </button>
+            &nbsp;
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="deleteData(data.id)"
+            >
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- View Single User Details using Modal -->
+
+<ng-template #template>
+  <div class="modal-header">
+    <h5 class="modal-title pull-right">User Details :</h5>
+    <h5>
+      <marquee
+        >Welcome , <b>{{ UserSingleData.Name }} !!</b></marquee
+      >
+    </h5>
+    <button
+      type="button"
+      class="btn-close close pull-right"
+      (click)="modalRef.hide()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="row container">
+      <div class="text-center">
+        <h2>User Details :</h2>
+        <img class="viewImg" src="{{ UserSingleData.photo }}" alt="" />
+        <h3>Name : {{ UserSingleData.Name }}</h3>
+      </div>
+      <div class="row text-center">
+        <div class="col-md-6">
+          UserId :
+          <h5>{{ UserSingleData.id }}</h5>
+          Email :
+          <h5>{{ UserSingleData.email }}</h5>
+          Mobile No. :
+          <h5>{{ UserSingleData.Mobile }}</h5>
+        </div>
+        <div class="col-md-6">
+          Channel :
+          <h5>{{ UserSingleData.channel }}</h5>
+          Courses :
+          <h5>{{ UserSingleData.Courses }}</h5>
+          Rating :
+          <h5><i *ngFor="let star of stars" [class]="iconClass[star]"></i></h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+      Close
+    </button>
+  </div>
+</ng-template>

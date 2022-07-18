@@ -1,0 +1,54 @@
+{
+  "userData": [
+    {
+      "id": 1,
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRbiMjUoOxJCAMB9poSO2wLg34m7OxmyaT-A&usqp=CAU",
+      "Name": "Jack",
+      "Mobile": "8745457869",
+      "email": "jack@gmail.com",
+      "channel": "CoderJack",
+      "Courses": "Angular",
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "photo": "https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg",
+      "Name": "Prasad Patange",
+      "Mobile": "987452148",
+      "email": "prasad@gmail.com",
+      "channel": "CoderPrasad",
+      "Courses": "Mean Stack",
+      "rating": 5
+    },
+    {
+      "id": 3,
+      "Name": "Roman",
+      "photo": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw1K7pE-hHoHeCSxqZh0S_X5sRm0IQ-yG25w&usqp=CAU",
+      "Mobile": "9874542157",
+      "email": "roman@gmail.com",
+      "channel": "CoderRoman",
+      "Courses": "RactJs",
+      "rating": 4
+    },
+    {
+      "id": 4,
+      "Name": "Jenny",
+      "photo": "https://img.photolamus.com/eoMrUbOH/x800/8383220f5e92cc0f6db2b2582b5f40b7/digital-cartoon-avatar-icon-hand-drawn-in-colored-style-from-your-photo.jpg",
+      "Mobile": "7457896587",
+      "email": "jenny@gmail.com",
+      "channel": "JennyCode",
+      "Courses": "NestJs",
+      "rating": 4
+    },
+    {
+      "id": 5,
+      "Name": "Jasmine",
+      "photo": "https://images.clipartlogo.com/files/istock/previews/9730/97305655-avatar-icon-of-girl-in-a-wide-brim-felt-hat.jpg",
+      "Mobile": "8745124577",
+      "email": "jasmine@gmail.com",
+      "channel": "CodeWithJasmine",
+      "Courses": "Mern Stack",
+      "rating": 5
+    }
+  ]
+}

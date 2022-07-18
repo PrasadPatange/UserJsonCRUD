@@ -1,0 +1,17 @@
+.image{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+}
+.viewImg{
+    height: 250px;
+    width: 250px;
+    border-radius: 250px;
+}
+.rate{
+  width: 120px;
+}
+.ib::before{
+  color : #FFC107;
+  width: 25px;
+}
