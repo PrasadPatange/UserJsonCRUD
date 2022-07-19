@@ -44,20 +44,12 @@ export class HomeComponent implements OnInit,AfterViewInit {
   }
   // Search
   ngAfterViewInit(): void {
-    console.log('ngAfterViewInit')
-
     const formValue = this.searchForm.valueChanges;
     formValue?.pipe(
-      // map(data => data.searchTerm)
-
-      // map(data => data['searchTerm'])
-
       pluck('searchTerm'),      
       debounceTime(1000),
       distinctUntilChanged(),
-      // tap(() => (this.loading = true)),
       switchMap(data => this.userService.getUserList(data)),
-      // tap(() => (this.loading = false)),
 
 
     ).subscribe(res =>{
@@ -107,26 +99,4 @@ export class HomeComponent implements OnInit,AfterViewInit {
       });
     });
   }
-
-  // @Input()
-  // rating!: any;
-  // rating :any = this.allData[1]?.rating;
-  //
-  // ngOnChanges() {
-  //   this.fillStars();
-  // }
-  // fillStars() {
-  //   var starsToFill = Math.round(this.rating * 2)/2; //round to nearest 0.5
-  //   var i = 0;
-  //   while(starsToFill > 0.5){
-  //     this.stars[i] = 1;
-  //     i++;
-  //     starsToFill--;
-  //     console.log("starfill : ",this.stars)
-  //   }
-  //   if(starsToFill === 0.5){
-  //     this.stars[i] = 0.5;
-  //     console.log("starfillhaft : ",this.stars)
-  //   }
-  // }
 }
