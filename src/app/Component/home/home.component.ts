@@ -1,20 +1,28 @@
 import {
+  AfterViewInit,
   Component,
   Input,
   OnChanges,
   OnInit,
   TemplateRef,
+  ViewChild,
 } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { User } from 'src/app/Interface/user';
 import { UserdataService } from 'src/app/service/userdata.service';
-
+import { concatMap, debounceTime, distinctUntilChanged, map, pluck, switchMap, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,AfterViewInit {
+
+  // Search
+  @ViewChild('searchForm') searchForm!: NgForm;
+  searchCount : any;
+  // 
   allData: any = [];
   modalRef!: BsModalRef;
   rating: any;
@@ -34,6 +42,33 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.getUserData();
   }
+  // Search
+  ngAfterViewInit(): void {
+    console.log('ngAfterViewInit')
+
+    const formValue = this.searchForm.valueChanges;
+    formValue?.pipe(
+      // map(data => data.searchTerm)
+
+      // map(data => data['searchTerm'])
+
+      pluck('searchTerm'),      
+      debounceTime(1000),
+      distinctUntilChanged(),
+      // tap(() => (this.loading = true)),
+      switchMap(data => this.userService.getUserList(data)),
+      // tap(() => (this.loading = false)),
+
+
+    ).subscribe(res =>{
+      this.allData = res;
+      console.log("Search : ",this.allData )
+      this.searchCount = Object.keys(res).length;
+      console.log("searchCount : ",this.searchCount )
+    })
+    
+  } 
+  // 
   getUserData() {
     this.userService.getData().subscribe((data) => {
       this.allData = data;
@@ -48,6 +83,7 @@ export class HomeComponent implements OnInit {
   }
   // Modal
   UserSingleData!: User;
+  
   openModal(template: TemplateRef<any>, userId: number) {
     this.userService.getData().subscribe((data) => {
       data.forEach((user, i) => {

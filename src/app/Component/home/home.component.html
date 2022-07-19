@@ -1,4 +1,5 @@
 <div class="container">
+  <!-- Add Button -->
   <div class="row mt-5">
     <div class="col col-md-4 offset-5">
       <button
@@ -9,11 +10,56 @@
         Add User <i class="bi bi-person-plus-fill"></i>
       </button>
     </div>
+
+    <!-- Search -->
+    <div class="text-center offset-1">
+      <form #searchForm="ngForm">
+        <div class="form-group row mt-3 mb-5">
+          <div class="form-group row">
+            <label
+              for="search"
+              class="col-sm-2 col-form-label"
+              style="text-align: right"
+              ><b>Serach &nbsp;<i class="bi bi-search"></i></b
+            ></label>
+            <div class="col-sm-6">
+              <input
+                type="text"
+                class="form-control"
+                style="border-color: black"
+                id="search"
+                required
+                name="searchTerm"
+                autocomplete="off"
+                ngModel
+                placeholder="Start Searching to Filter..."
+              />
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="results" *ngIf="allData?.length">
+        <div class="d-flex">
+          <h3>Search Results</h3>
+          <span class="ms-auto text-muted"
+            ><b>{{ searchCount }}</b> Result Found...</span
+          >
+        </div>
+      </div>
+
+      <div *ngIf="!allData?.length">
+        <h1 class="text-center">No Data Found...</h1>
+      </div>
+    </div>
   </div>
 </div>
+<!-- User Table  -->
 <div class="row">
   <div class="col text-center mt-3 mx-5">
-    <table class="table table-dark table-hover shadow p-5 mb-5 rounded">
+    <table
+      class="table table-dark table-hover shadow p-5 mb-5 rounded"
+      *ngIf="allData?.length"
+    >
       <thead>
         <tr>
           <th scope="col">ID</th>

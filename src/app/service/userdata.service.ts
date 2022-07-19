@@ -36,4 +36,9 @@ export class UserdataService {
   deleteData(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  // Search Data
+  getUserList(searchTerm: string | number) {
+    return this.http.get(this.url + "?q=" + searchTerm);
+  }
 }
