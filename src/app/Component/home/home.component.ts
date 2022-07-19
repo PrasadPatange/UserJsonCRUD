@@ -60,7 +60,7 @@ export class HomeComponent implements OnInit,AfterViewInit {
     })
     
   } 
-  // 
+  
   getUserData() {
     this.userService.getData().subscribe((data) => {
       this.allData = data;
